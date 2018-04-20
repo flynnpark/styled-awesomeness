@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Fragment>
+        <Button danger />
+        <Button />
+      </Fragment>
     );
   }
 }
+
+const Button = ({ danger }) => (
+  <button
+    className={danger ? 'button button--danger' : 'button button--success'}
+  >
+    Hello
+  </button>
+);
 
 export default App;
