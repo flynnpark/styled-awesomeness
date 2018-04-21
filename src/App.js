@@ -1,5 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { injectGlobal } from 'styled-components';
+
+injectGlobal`
+  body {
+    padding: 0;
+    margin: 0;
+  }
+`;
 
 class App extends Component {
   render() {
@@ -7,6 +14,7 @@ class App extends Component {
       <Container>
         <Button danger>Hello</Button>
         <Button>Hello</Button>
+        <Anchor href="https://blog.flynndev.xyz">Go to Blog</Anchor>
       </Container>
     );
   }
@@ -31,6 +39,10 @@ const Button = styled.button`
     outline: none;
   }
   background-color: ${props => (props.danger ? '#2ecc71' : '#e74c3c')};
+`;
+
+const Anchor = Button.withComponent('a').extend`
+  text-decoration: none;
 `;
 
 export default App;
