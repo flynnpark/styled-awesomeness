@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import styled, { injectGlobal } from 'styled-components';
+import styled, { injectGlobal, keyframes } from 'styled-components';
 
 injectGlobal`
   body {
@@ -38,11 +38,25 @@ const Button = styled.button`
   &:focus {
     outline: none;
   }
-  background-color: ${props => (props.danger ? '#2ecc71' : '#e74c3c')};
+  background-color: ${props => (props.danger ? '#e74c3c' : '#2ecc71')};
+  ${props => {
+    if (props.danger) {
+      return `animation: ${rotation} 2s linear infinite`;
+    }
+  }};
 `;
 
 const Anchor = Button.withComponent('a').extend`
   text-decoration: none;
+`;
+
+const rotation = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 `;
 
 export default App;
